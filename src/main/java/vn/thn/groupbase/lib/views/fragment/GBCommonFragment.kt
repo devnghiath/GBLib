@@ -57,4 +57,5 @@ abstract class GBCommonFragment : Fragment() {
     abstract fun firstInit()
     abstract fun initView()
     abstract fun setAnimationCustom(animationCustom: FragmentTransaction)
+    abstract fun fragmentName(): String?
 }

@@ -56,14 +56,20 @@ class GBViewManager {
         var tagName = tag
         val view = getView(fragment, data)
         if ( view != null) {
-            val nameFragment: String = fragment.simpleName!!
-            if (GBUtils.isEmpty(tagName)) {
-                tagName = nameFragment
-            }
             val ft = mFragmentManager.beginTransaction()
-            if (view is GBCommonFragment) {
+            if (view is GBCommonFragment){
                 view.setAnimationCustom(ft)
+                if (view.fragmentName() != null){
+                    tagName = view.fragmentName()
+                }
+            } else{
+                tagName = view.javaClass.simpleName!!
             }
+
+            if (!GBUtils.isEmpty(tag)) {
+                tagName = tag
+            }
+
             if (contentId == 0) {
                 ft.replace(mContentId, view, tagName)
             } else {
@@ -84,15 +90,20 @@ class GBViewManager {
         if(data!=null){
             fragment.arguments = data
         }
-
-        val nameFragment: String = fragment.javaClass.simpleName
-        if (GBUtils.isEmpty(tagName)) {
-            tagName = nameFragment
-        }
         val ft = mFragmentManager.beginTransaction()
-        if (fragment is GBCommonFragment) {
+        if (fragment is GBCommonFragment){
             fragment.setAnimationCustom(ft)
+            if (fragment.fragmentName() != null){
+                tagName = fragment.fragmentName()
+            }
+        } else{
+            tagName = fragment.javaClass.simpleName!!
         }
+
+        if (!GBUtils.isEmpty(tag)) {
+            tagName = tag
+        }
+
         if (contentId == 0) {
             ft.replace(mContentId, fragment, tagName)
         } else {
@@ -112,14 +123,21 @@ class GBViewManager {
         if (data!=null){
             fragment.arguments = data
         }
-        val nameFragment = fragment.javaClass.simpleName!!
-        if (GBUtils.isEmpty(tag)) {
-            tagName = nameFragment
-        }
         val ft = mFragmentManager.beginTransaction()
-        if (fragment is GBCommonFragment) {
+        if (fragment is GBCommonFragment){
             fragment.setAnimationCustom(ft)
+            if (fragment.fragmentName() != null){
+                tagName = fragment.fragmentName()
+            }
+        } else{
+            tagName = fragment.javaClass.simpleName!!
         }
+
+        if (!GBUtils.isEmpty(tag)) {
+            tagName = tag
+        }
+
+
         if (contentId == 0) {
             ft.replace(mContentId, fragment,tagName)
         } else {
@@ -137,14 +155,20 @@ class GBViewManager {
         var tagName = tag
         val view = getView(fragment, data)
         if (view != null) {
-            val nameFragment = fragment.simpleName!!
-            if (GBUtils.isEmpty(tag)) {
-                tagName = nameFragment
-            }
             val ft = mFragmentManager.beginTransaction()
-            if (view is GBCommonFragment) {
+            if (view is GBCommonFragment){
                 view.setAnimationCustom(ft)
+                if (view.fragmentName() != null){
+                    tagName = view.fragmentName()
+                }
+            } else{
+                tagName = view.javaClass.simpleName!!
             }
+
+            if (!GBUtils.isEmpty(tag)) {
+                tagName = tag
+            }
+
             if (contentId == 0) {
                 ft.replace(mContentId, view,tagName)
             } else {
@@ -177,14 +201,20 @@ class GBViewManager {
         var tagName = tag
         val view = getView(fragment, data)
         if ( view != null) {
-            val nameFragment = fragment.simpleName!!
-            if (GBUtils.isEmpty(tag)) {
-                tagName = nameFragment
-            }
             val ft = mFragmentManager.beginTransaction()
-            if (view is GBCommonFragment) {
+            if (view is GBCommonFragment){
                 view.setAnimationCustom(ft)
+                if (view.fragmentName() != null){
+                    tagName = view.fragmentName()
+                }
+            } else{
+                tagName = view.javaClass.simpleName!!
             }
+
+            if (!GBUtils.isEmpty(tag)) {
+                tagName = tag
+            }
+
             if (contentId == 0) {
                 ft.replace(mContentId, view, tagName)
             } else {
@@ -205,15 +235,19 @@ class GBViewManager {
         if (data!=null){
             fragment.arguments = data
         }
-        val nameFragment = fragment.javaClass.simpleName!!
-        if (GBUtils.isEmpty(tag)) {
-            tagName = nameFragment
-        }
         val ft = mFragmentManager.beginTransaction()
-        if (fragment is GBCommonFragment) {
+        if (fragment is GBCommonFragment){
             fragment.setAnimationCustom(ft)
+            if (fragment.fragmentName() != null){
+                tagName = fragment.fragmentName()
+            }
+        } else{
+            tagName = fragment.javaClass.simpleName!!
         }
 
+        if (!GBUtils.isEmpty(tag)) {
+            tagName = tag
+        }
         if (contentId == 0) {
             ft.replace(mContentId, fragment, tagName)
         } else {
