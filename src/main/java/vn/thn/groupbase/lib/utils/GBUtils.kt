@@ -10,7 +10,7 @@ object GBUtils {
         return if (objects is String) {
             TextUtils.isEmpty(String::class.java.cast(objects))
         } else {
-            if (objects == null) true else false
+            return objects == null
         }
     }
 }
