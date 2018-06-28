@@ -44,7 +44,7 @@ abstract class GBDialogFragment : DialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        iniView()
+        initView()
         if (mDialogListener != null) {
             mDialogListener!!.onProcessContent(this)
         }
@@ -96,7 +96,7 @@ abstract class GBDialogFragment : DialogFragment() {
     }
 
     //abstract
-    abstract fun iniView()
+    abstract fun initView()
 
     abstract fun dialogName(): String
     abstract fun layoutCommon(): Int
