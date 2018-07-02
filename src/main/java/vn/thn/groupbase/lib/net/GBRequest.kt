@@ -19,6 +19,7 @@ abstract class GBRequest : Callback {
     var mRequestListener: GBRequestCallBack? = null
     var mContext: FragmentActivity? = null
     var responseType: GBResponseType = GBResponseType.JSON
+    var request = this
     var mediaType = "application/json"
         get() = field
         set(value) {
@@ -37,6 +38,7 @@ abstract class GBRequest : Callback {
         this.mRequestListener = requestListener
         this.mContext = context
         this.responseType = responseType
+        request = this
     }
 
     /**
@@ -138,7 +140,7 @@ abstract class GBRequest : Callback {
     override fun onFailure(call: Call?, e: IOException?) {
         if (mRequestListener != null) {
             if (mContext != null) {
-                mContext!!.runOnUiThread { mRequestListener!!.onRequestError(GBRequestError.NETWORK_NOT_CONNECT, this) }
+                mContext!!.runOnUiThread { mRequestListener!!.onRequestError(GBRequestError.NETWORK_NOT_CONNECT, request) }
             } else {
                 mRequestListener!!.onRequestError(GBRequestError.NETWORK_NOT_CONNECT, this)
             }
@@ -149,7 +151,7 @@ abstract class GBRequest : Callback {
         val body = response!!.body()?.string()
         if (mRequestListener != null) {
             if (mContext != null) {
-                mContext!!.runOnUiThread { mRequestListener!!.onResponse(GBResponse(body!!, responseType), this) }
+                mContext!!.runOnUiThread { mRequestListener!!.onResponse(GBResponse(body!!, responseType), request) }
             } else {
                 mRequestListener!!.onResponse(GBResponse(body!!, responseType), this)
             }
