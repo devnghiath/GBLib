@@ -40,6 +40,7 @@ abstract class GBCommonFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initViewCommon()
         initView()
     }
     fun setVisibility(resId: Int,visibility: Int) {
@@ -49,12 +50,16 @@ abstract class GBCommonFragment : Fragment() {
         return mFragmentView.findViewById<T>(resId)
     }
 
+    open fun onBack() {
+        activity!!.onBackPressed()
+    }
     //abstract
     abstract fun layoutCommon(): Int
     abstract fun viewCommonID(): Int
     abstract fun contentId(): Int
     abstract fun layoutContent(): Int
     abstract fun firstInit()
+    abstract fun initViewCommon()
     abstract fun initView()
     abstract fun setAnimationCustom(animationCustom: FragmentTransaction)
     abstract fun fragmentName(): String?

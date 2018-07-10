@@ -13,6 +13,7 @@ abstract class GBActivityCommon : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(layoutCommon())
         viewManager = GBViewManager(supportFragmentManager,contentId(),this)
+        initCommon()
         init()
     }
 
@@ -26,8 +27,12 @@ abstract class GBActivityCommon : AppCompatActivity() {
     /**
      * init
      */
-    abstract fun init();
+    abstract fun init()
 
+    /**
+     *initCommon
+     */
+    abstract fun initCommon()
     /**
      *contentId
      */
