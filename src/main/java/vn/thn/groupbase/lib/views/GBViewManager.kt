@@ -195,7 +195,7 @@ class GBViewManager {
     /**
      * pushViewToRoot
      */
-    fun pushViewToRoot(fragment: KClass<out Fragment>, data: Bundle?, tag: String?, @IdRes contentId: Int = 0) {
+    fun pushViewToRoot(fragment: KClass<out Fragment>, data: Bundle? = null, tag: String? = null, @IdRes contentId: Int = 0) {
         hideKeyboard()
         mFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         var tagName = tag
