@@ -3,6 +3,7 @@ package vn.thn.groupbase.lib.utils
 import android.content.Context
 import android.widget.Toast
 
+
 /**
  * Created by truonghieunghia on 6/27/18.
  */
@@ -40,4 +41,6 @@ object GBLog {
             Toast.makeText(context, prefix + sms, Toast.LENGTH_SHORT).show()
         }
     }
+
+
 }
