@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.view.inputmethod.InputMethodManager
+import vn.thn.groupbase.lib.utils.GBLog
 import vn.thn.groupbase.lib.utils.GBUtils
 import vn.thn.groupbase.lib.views.fragment.GBCommonFragment
 import kotlin.reflect.KClass
@@ -19,11 +20,13 @@ class GBViewManager {
     var mContentId = 0
     var mFragmentManager: FragmentManager
     var mFragmentActivity: FragmentActivity
+    private var isDebug = true
 
-    constructor(fragmentManager: FragmentManager, @IdRes contentId: Int = 0, activity: FragmentActivity) {
+    constructor(fragmentManager: FragmentManager, @IdRes contentId: Int = 0, activity: FragmentActivity,isDebug : Boolean ) {
         this.mFragmentManager = fragmentManager
         this.mFragmentActivity = activity
         this.mContentId = contentId
+        this.isDebug = isDebug
     }
 
     /**
@@ -75,7 +78,7 @@ class GBViewManager {
             } else {
                 ft.replace(contentId, view, tagName)
             }
-
+            GBLog.info("pushView",tagName!!,isDebug)
             ft.addToBackStack(tagName)
             ft.commitAllowingStateLoss()
         }
@@ -109,6 +112,7 @@ class GBViewManager {
         } else {
             ft.replace(contentId, fragment, tagName)
         }
+        GBLog.info("pushView",tagName!!,isDebug)
         ft.addToBackStack(tagName)
         ft.commitAllowingStateLoss()
     }
@@ -143,6 +147,7 @@ class GBViewManager {
         } else {
             ft.replace(contentId, fragment,tagName)
         }
+        GBLog.info("addView",tagName!!,isDebug)
         ft.commitAllowingStateLoss()
         //            mFragmentManager.executePendingTransactions();
     }
@@ -174,6 +179,7 @@ class GBViewManager {
             } else {
                 ft.replace(contentId, view,tagName)
             }
+            GBLog.info("addView",tagName!!,isDebug)
             ft.commitAllowingStateLoss()
             //            mFragmentManager.executePendingTransactions();
         }
@@ -220,6 +226,7 @@ class GBViewManager {
             } else {
                 ft.replace(contentId, view, tagName)
             }
+            GBLog.info("pushViewToRoot",tagName!!,isDebug)
             ft.commitAllowingStateLoss()
             //            mFragmentManager.executePendingTransactions();
         }
@@ -230,6 +237,7 @@ class GBViewManager {
      */
     fun pushViewToRoot(fragment: Fragment, data: Bundle?, tag: String?, @IdRes contentId: Int = 0) {
         hideKeyboard()
+
         mFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         var tagName = tag
         if (data!=null){
@@ -253,6 +261,7 @@ class GBViewManager {
         } else {
             ft.replace(contentId, fragment, tagName)
         }
+        GBLog.info("pushViewToRoot",tagName!!,isDebug)
         ft.commitAllowingStateLoss()
         //mFragmentManager.executePendingTransactions();
     }

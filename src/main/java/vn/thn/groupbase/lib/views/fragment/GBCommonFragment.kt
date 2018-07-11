@@ -21,7 +21,7 @@ abstract class GBCommonFragment : Fragment() {
             viewManager = (activity as GBActivityCommon).viewManager
         } else {
             if (activity!=null)
-            viewManager = GBViewManager(activity!!.supportFragmentManager,contentId(), activity!!)
+            viewManager = GBViewManager(activity!!.supportFragmentManager,contentId(), activity!!,isDebugMode())
         }
 
         firstInit()
@@ -63,4 +63,8 @@ abstract class GBCommonFragment : Fragment() {
     abstract fun initView()
     abstract fun setAnimationCustom(animationCustom: FragmentTransaction)
     abstract fun fragmentName(): String?
+    /**
+     *isDebugMode
+     */
+    abstract fun isDebugMode(): Boolean
 }

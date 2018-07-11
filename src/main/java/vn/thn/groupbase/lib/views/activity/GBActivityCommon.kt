@@ -12,7 +12,7 @@ abstract class GBActivityCommon : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutCommon())
-        viewManager = GBViewManager(supportFragmentManager,contentId(),this)
+        viewManager = GBViewManager(supportFragmentManager, contentId(), this, isDebugMode())
         initCommon()
         init()
     }
@@ -33,8 +33,14 @@ abstract class GBActivityCommon : AppCompatActivity() {
      *initCommon
      */
     abstract fun initCommon()
+
     /**
      *contentId
      */
     abstract fun contentId(): Int
+
+    /**
+     *isDebugMode
+     */
+    abstract fun isDebugMode(): Boolean
 }
